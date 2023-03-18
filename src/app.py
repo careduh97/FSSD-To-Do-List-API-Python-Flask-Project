@@ -8,14 +8,13 @@ todos = [
 ]
 
 @app.route('/todos', methods=['GET'])
-def hello_world():
+def get_todo():
     json_text = jsonify(todos)
     return json_text
 
 @app.route('/todos', methods=['POST'])
 def add_new_todo():
     request_body = request.data
-    print("Incoming request with the following body", request_body)
     decoded_object = json.loads(request.data)
     todos.append(decoded_object)
     return jsonify(todos)
